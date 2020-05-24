@@ -42,7 +42,7 @@ The reason to use the Unifi Switch instead of the other cheaper options is that 
 
 I enabled static IP address for each node and route IP address to route the internet traffic in my home network by invoking `sudo nano` command to edit the /etc/dhcpcd.conf file and uncomment the line:
 
-'''linux
+'''python
 interface eth0
 static ip_address=192.168.1.21/24
 
