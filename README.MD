@@ -1,2 +1,8 @@
-## Step-by-step instruction for Deploying Spark
-on a 4-node RaspberryPi Cluster
+## Deploying Spark on RaspberryPi Cluster
+a step-by-step instruction
+
+### Hardware
+
+### OS
+
+### Steps
