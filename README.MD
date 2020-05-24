@@ -38,7 +38,15 @@ The cluster case originally provides pre-drilled holes for mounting the stands f
 Since I installed Raspbrian Lite without Desktop interface, I created an empty SSH file and saved it to the boot partition using a Mac and card reader prior the first boot of the Raspberry Pi.
 
 ### Config Static IP Addresses
+The reason to use the Unifi Switch instead of the other cheaper options is that the Unifi Switch can be integrated to my home network easily. I've already had a Unifi Controller, Security Gateway, and 8 port Switch. By adding additional switch, I can access the cluster easily from any where in my home.
 
+I enabled static IP address for each node and route IP address to route the internet traffic in my home network by invoking `sudo nano` command to edit the /etc/dhcpcd.conf file and uncomment the line:
+
+'''
+interface eth0
+static ip_address=192.168.1.21/24
+
+'''
 ## Connection
 
 ## Hadoop
