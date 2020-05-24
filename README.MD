@@ -40,13 +40,17 @@ Since I installed Raspbrian Lite without Desktop interface, I created an empty S
 ### Config Static IP Addresses
 The reason to use the Unifi Switch instead of the other cheaper options is that the Unifi Switch can be integrated to my home network easily. I've already had a Unifi Controller, Security Gateway, and 8 port Switch. By adding additional switch, I can access the cluster easily from any where in my home.
 
-I enabled static IP address for each node and route IP address to route the internet traffic in my home network by invoking `sudo nano` command to edit the /etc/dhcpcd.conf file and uncomment the line:
+I enabled static IP address for each node and router's IP address to route the internet traffic in my home network by invoking:
+```bash
+$ sudo nano /etc/dhcpcd.conf
+```
+to uncomment the lines in the file:
 
-'''python
+```bash
 interface eth0
 static ip_address=192.168.1.21/24
+```
 
-'''
 ## Connection
 
 ## Hadoop
