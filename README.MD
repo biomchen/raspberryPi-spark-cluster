@@ -27,6 +27,7 @@ To balance between cost and performance, I chose four Raspberry Pi 4B as the bas
 ### Install PoE HAT and cluster
 There was a test indicating the old version of PoE HAT may overheat by operating for a long time. I recieved the updated version, hopefully the overheating issue has been migitated.
 The PoE HAT package provides four short M2.5 stands and associated screws. To install PoE HAT,
+!()[\images\raspberryPi.png]
   1. Locate the 40-pin GPIO headers and 4-pin PoE headers on the Raspberry Pi and corresponding slots in the PoE HAT;
   2. Use the provided stands and screws to fasten the stands to the PoE HAT;
   3. Align the stands to the holes of Raspberry pi and insert the PoE HAT on top of the raspberry Pi carefully
@@ -175,7 +176,12 @@ You can install `ufw` and edit rules to protect the cluster from unauthorized ac
 
 ## Hadoop
 ### Single node
-
+Since I did NOT follow Andrew to use NOOBS OS, I have install Java by myself using
+```bash
+$ sudo apt-get install openjdk-8-jdk
+$ java -version # check the java version
+```
+Please check (Hadoop Java Versions)[https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+Java+Versions] for compatiblity.
 
 
 ## Spark
