@@ -19,7 +19,8 @@ To balance between cost and performance, I chose four Raspberry Pi 4B as the bas
   * Storage: 4 X 32GB microSD ()
   * Power: Raspberry Pi Foundation PoE HAT ($20 each)
   * PoE Switch: Unifi 8 Port Switch 60W
-  * OS: Raspbian Lite (surprisingly free)
+  * OS: Raspbian 2020-02-13 (surprisingly free)
+  * JAVA: openJDK 1.8.0_212, JRE build 8u212-b01-1+rpi1-b01, Client VM build 25.212-b01, mixed mode.
   * Cluster case: GeekPi cluster case ($39.99 not recommended)
   * Cable: 4 X 1-feet ethernet cables ($10)
 
@@ -169,10 +170,13 @@ and copy all .bashrc to other nodes
 ```bash
 $ clusterscp ~/.bashrc
 ```
-
-## Connection
+### Firewalls and Security
+You can install `ufw` and edit rules to protect the cluster from unauthorized access. Or you can use `fail2ban` to monitor the ssh service after you have modified rules for login. See [Andrew's post](https://dev.to/awwsmm/building-a-raspberry-pi-hadoop-spark-cluster-8b2) for details.
 
 ## Hadoop
+### Single node
+
+
 
 ## Spark
 
