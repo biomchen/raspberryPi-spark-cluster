@@ -129,7 +129,46 @@ $ scp ~/.ssh/config Spark-Worker-2:~/.ssh/config
 $ scp ~/.ssh/config Spark-Worker-3:~/.ssh/config
 ```
 
+### Adding functions to .bashrc
+Functions can ease your tasks since you have multiple nodes in your cluster. Alternatively, there is package to utilize the clusters. Here I follow Andrew's suggestions to implement the functions in the .bashrc file:
 
+```bash
+# get hostname of all the nodes
+function otherpis {
+  grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname)
+}
+
+# commands on all nodes; run the commands on other nodes first, then run it on the current node
+function clustercmd {
+  for pi in $(otherpis); do ssh $pi "$@"; done
+  $@
+}
+
+# securely copy to all nodes
+function clusterscp {
+  for pi in $(otherpis); do
+    cat $1 | ssh $pi "sudo tee $1" > /dev/null 2>&1
+  done
+}
+
+# reboot all nodes
+function clusterreboot {
+  clustercmd sudo shutdown -r now
+}
+
+# shutdown all nodes
+function clustershutdown {
+  clustercmd sudo shutdown now
+}
+```
+After editing .bashrc, don't forget to
+```bash
+$ source ~/.bashrc
+```
+and copy all .bashrc to other nodes
+```bash
+$ clusterscp ~/.bashrc
+```
 
 ## Connection
 
