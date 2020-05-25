@@ -20,7 +20,7 @@ To balance between cost and performance, I chose four Raspberry Pi 4B as the bas
   * Power: Raspberry Pi Foundation PoE HAT ($20 each)
   * PoE Switch: Unifi 8 Port Switch 60W
   * OS: Raspbian 2020-02-13 (surprisingly free)
-  * JAVA: openJDK 1.8.0_212, JRE build 8u212-b01-1+rpi1-b01, Client VM build 25.212-b01, mixed mode.
+  * JAVA: openJDK 1.8.0_212
   * Cluster case: GeekPi cluster case ($39.99 not recommended)
   * Cable: 4 X 1-feet ethernet cables ($10)
 
