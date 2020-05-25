@@ -109,7 +109,7 @@ $ ssh-keygen -t ed25519
 ```
 No passphrase is necessary to protect the access of key pair.
 
-**The Steps from Config Static IP to SSH with keys pair can be done repeated from first pi to last pi.**
+#### **The Steps from Config Static IP to SSH with keys pair can be done repeated from first pi to last pi.**
 
 Concatenate each public key to the Master node; perform the command on the rest nodes:
 ```bash
@@ -122,7 +122,7 @@ $ scp ~/.ssh/authorized_keys Spark-Worker-1:~/.ssh/authorized_keys
 $ scp ~/.ssh/authorized_keys Spark-Worker-2:~/.ssh/authorized_keys
 $ scp ~/.ssh/authorized_keys Spark-Worker-3:~/.ssh/authorized_keys
 ```
-Don't forge to copy `~/.ssh/config` file.
+Don't forget to copy `~/.ssh/config` file.
 ```bash
 $ scp ~/.ssh/config Spark-Worker-1:~/.ssh/config
 $ scp ~/.ssh/config Spark-Worker-2:~/.ssh/config
