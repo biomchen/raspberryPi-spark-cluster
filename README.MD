@@ -36,8 +36,9 @@ The cluster case originally provides pre-drilled holes for mounting the stands f
 ## Networking
 ### Enable SSH
 Since I installed Raspbrian Lite without Desktop interface, I created an empty SSH file and saved it to the boot partition using a Mac and card reader prior the first boot of the Raspberry Pi.
+After you SSHing your raspberry pi, don't forget to change the password using `passwd` command if your raspberry pis are in your home network.
 
-### Config Static IP Addresses
+### Config Static IP Addresses and Hostnames
 The reason to use the Unifi Switch instead of the other cheaper options is that the Unifi Switch can be integrated to my home network easily. I've already had a Unifi Controller, Security Gateway, and 8 port Switch. By adding additional switch, I can access the cluster easily from any where in my home.
 
 I enabled static IP address for each node and router's IP address to route the internet traffic in my home network by invoking:
@@ -48,8 +49,87 @@ to uncomment the lines in the file:
 
 ```bash
 interface eth0
-static ip_address=192.168.1.21/24
+static ip_address=192.168.1.20/24
+static routers=192.168.1.1
 ```
+The 192.168.1.20 is the IP address of the master node; 192.168.1.21 – 192.168.1.23 are of worker nodes. So you have to repeated edits in each node.
+
+```bash
+$ sudo nano /etc/hosts
+```
+
+```bash
+192.168.1.20    Spark-Master   
+192.168.1.21    Spark-Worker-1
+192.168.1.22    Spark-Worker-2
+192.168.1.23    Spark-Worker-3
+```
+```bash
+sudo nano /etc/hostname
+```
+
+```bash
+Spark-Master or Spark-Work-X
+```
+where X indicates the node (1,2, or 3 for my cluster).
+
+After you have set hostnames for all nodes, you can alias the hostnames to ssh command using
+
+```bash
+$ sudo nano ~/.ssh/config
+```
+```bash
+Host Spark-Master
+User pi
+Hostname 192.168.1.20
+
+Host Spark-Worker-1
+User pi
+Hostname 192.168.1.21
+
+Host Spark-Worker-2
+User pi
+Hostname 192.168.1.22
+
+Host Spark-Worker-3
+User pi
+Hostname 192.168.1.23
+```
+If you don't have `~/.ssh/` in the home directory, you should create one before you can add and edit the `config` file:
+
+```bash
+$ mkdir .ssh
+$ nano ~/.ssh/config
+```
+Now you can use alias to SSH each node of the cluster. Don't forget to add this your config file if you want to alias to SSH each node.
+
+### SSH with public/private keys pairs
+```bash
+$ ssh-keygen -t ed25519
+```
+No passphrase is necessary to protect the access of key pair.
+
+**The Steps from Config Static IP to SSH with keys pair can be done repeated from first pi to last pi.**
+
+Concatenate each public key to the Master node; perform the command on the rest nodes:
+```bash
+$ cat ~/.ssh/id_ed25519.pub | ssh pi@Spark-Master 'cat >> .ssh/authorized_keys'
+```
+After public keys of other pis copied to authorized_keys file of the Master node, you need copy the Master node's public key to the authorized_keys file as well.
+Then you use `scp` to securely copy the authorized_keys file to the worker nodes
+```bash
+$ scp ~/.ssh/authorized_keys Spark-Worker-1:~/.ssh/authorized_keys
+$ scp ~/.ssh/authorized_keys Spark-Worker-2:~/.ssh/authorized_keys
+$ scp ~/.ssh/authorized_keys Spark-Worker-3:~/.ssh/authorized_keys
+```
+Don't forge to copy `~/.ssh/config` file.
+```bash
+$ scp ~/.ssh/config Spark-Worker-1:~/.ssh/config
+$ scp ~/.ssh/config Spark-Worker-2:~/.ssh/config
+$ scp ~/.ssh/config Spark-Worker-3:~/.ssh/config
+```
+
+
 
 ## Connection
 
