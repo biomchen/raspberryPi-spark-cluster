@@ -1,4 +1,6 @@
-# Deploying Hadoop and Spark on Raspberry Pi Cluster
+#### About
+
+# Setting Up Raspberry Pi Cluster for Apache Spark
 
 ## Introduction
 Today, the requirement of becoming a data scientist has been drastically changed from 10 years ago. Data scientist is capable of not only ETLing data and building, validating, and deploying models but also building front ends (such as dashboard) and increasing efficiency of the entire process (such as distributed computing) since data is huge (Big Data). Knowledge of Big Data tools like the Apache Software Foundation's Hadoop and Spark software is desired in the Data Scientist job description.
