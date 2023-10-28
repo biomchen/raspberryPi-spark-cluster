@@ -186,11 +186,7 @@ $ java -version # check the java version
 ```
 Please check (Hadoop Java Versions)[https://cwiki.apache.org/confluence/display/HADOOP/Hadoop+Java+Versions] for compatiblity.
 
+## Spark and Following Steps
+You can find a detailed following steps, including `How to install Spark` and `How to submit the job` in [Andrew's post](https://dev.to/awwsmm/building-a-raspberry-pi-hadoop-spark-cluster-8b2).
 
-## Spark
-
-## Steps
-
-## Final thoughts
-
-## Reference
+**Thank you for reading**
