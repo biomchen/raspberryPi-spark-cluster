@@ -12,7 +12,7 @@ This a step-by-step instruction on how to deploying the distributed computing sy
 To balance between cost and performance, I chose four Raspberry Pi 4B as the basic nodes. The 4-core CPU is running at 1.5Ghz by default. By tweaking the voltage to 2V, I was able to run the CPU at 1.8Ghz. To o test if the CPU is stable and cooling system is efficient during intensive workload. I run XXX. The detailed spec of the cluster is as below:
 
 
-<img src=https://github.com/biomchen/raspberryPi-spark-cluster/assets/45435029/0715eaa8-8b75-4885-9b13-faa529811a0a alt="respberrypi" height=300 />
+<img src=https://github.com/biomchen/raspberryPi-spark-cluster/assets/45435029/0715eaa8-8b75-4885-9b13-faa529811a0a alt="respberrypi" height=500 />
 
 
 ### Specs and cost of Respberry Pi 4 Cluster:
